@@ -1,0 +1,35 @@
+CREATE TABLE shows (
+    show_id INT NOT NULL AUTO_INCREMENT,
+    show_title TEXT NOT NULL,
+    show_releasedate DATE NOT NULL,
+    show_type TEXT,
+    show_length TIME,
+    show_genre TEXT,
+    show_cast TEXT,
+    show_crew TEXT,
+    show_characters TEXT,
+    show_prodcomp TEXT,
+    PRIMARY KEY (show_id)
+);
+
+
+INSERT INTO shows (
+    show_title,
+    show_releasedate,
+    show_type,
+    show_length,
+    show_genre,
+    show_cast,
+    show_characters,
+    show_prodcomp
+    )
+    VALUES (
+    'Harry Potter', 
+    '2005-05-13', 
+    'movie', 
+    '2:30:58', 
+    'fantasy', 
+    'Daniel Radcliffe,Emma Watson,Rupert Grint',
+    'Harry Potter,Voldemort',
+    'Warer Brothers Studios'
+);

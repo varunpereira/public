@@ -1,0 +1,25 @@
+#text {
+    height: 25px;
+    border-radius: 5px;
+    padding: 4px;
+    border: solid thin #aaa;
+    width: 100%;
+}
+
+#button {
+    padding: 10px;
+    width: 100px;
+    color: white;
+    background-color: rgb(107, 107, 107);
+    border: none;
+    border-radius: 5px;
+}
+
+#box {
+    background-color: white;
+    margin: auto;
+    width: 300px;
+    padding: 20px;
+    border-style: solid;
+    border-radius: 10px;
+}

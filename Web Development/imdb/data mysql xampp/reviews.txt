@@ -1,0 +1,10 @@
+CREATE TABLE reviews (
+    review_id INT NOT NULL AUTO_INCREMENT,    
+    user_name TEXT NOT NULL,
+    user_id INT NOT NULL,
+    show_title TEXT NOT NULL,
+    review_submitdate TIMESTAMP,
+    review_message TEXT,
+    review_score INT(2),
+    PRIMARY KEY (review_id)
+);
