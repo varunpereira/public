@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="810.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="main.controller.shared.LoginController">
+    <!--    <children>-->
+
+    <Label fx:id="isConnected" layoutX="24.0" layoutY="28.0" text="Database Status" />
+   <Label fx:id="isConnected1" layoutX="377.0" layoutY="23.0" text="Login">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+    <TextField fx:id="txtUsername" layoutX="124.0" layoutY="55.0" prefHeight="41.0" prefWidth="559.0" promptText="Username" AnchorPane.bottomAnchor="304.0" AnchorPane.leftAnchor="124.0" AnchorPane.rightAnchor="127.0" AnchorPane.topAnchor="55.0" />
+    <PasswordField fx:id="txtPassword" layoutX="125.0" layoutY="100.0" prefHeight="41.0" prefWidth="559.0" promptText="Password" AnchorPane.bottomAnchor="259.0" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="126.0" AnchorPane.topAnchor="100.0" />
+        <Hyperlink layoutX="554.0" layoutY="148.0" onAction="#forgotPassword" prefHeight="24.0" prefWidth="130.0" text="Forgot Password?" />
+    <Button defaultButton="true" layoutX="126.0" layoutY="180.0" mnemonicParsing="false" onAction="#checkAccountExists" prefHeight="41.0" prefWidth="559.0" text="Login" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="179.0" AnchorPane.leftAnchor="126.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="180.0">
+        <font>
+            <Font name="System Font" size="13.0" />
+        </font>
+    </Button>
+    <Hyperlink layoutX="382.0" layoutY="235.0" onAction="#register" prefHeight="24.0" prefWidth="106.0" text="Register" />
+   <Label fx:id="loginError" layoutX="133.0" layoutY="269.0" textFill="#fa2020" />
+
+    <!--    </children>-->
+
+</AnchorPane>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="717.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.admin.InsertAdminController">
+    <Label fx:id="isConnected" layoutX="24.0" layoutY="28.0" text="Database Status" />
+    <Label fx:id="isConnected1" layoutX="324.0" layoutY="46.0" text="Register Admin" textAlignment="CENTER">
+        <font>
+            <Font size="16.0" />
+        </font>
+    </Label>
+    <Button defaultButton="true" layoutX="530.0" layoutY="45.0" mnemonicParsing="false" onAction="#goAdminHome" prefHeight="27.0" prefWidth="86.0" text="Back Home" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="645.0" AnchorPane.leftAnchor="530.0" AnchorPane.rightAnchor="194.0" AnchorPane.topAnchor="45.0">
+        <font>
+            <Font name="System Font" size="13.0" />
+        </font>
+    </Button>
+    <Button defaultButton="true" layoutX="631.0" layoutY="45.0" mnemonicParsing="false" onAction="#Logout" prefHeight="27.0" prefWidth="86.0" text="Logout" textAlignment="CENTER" textFill="WHITE">
+        <font>
+            <Font name="System Font" size="13.0" />
+        </font>
+    </Button>
+
+    <Label layoutX="125.0" layoutY="75.0" text="Admin ID" />
+    <TextField fx:id="empID" layoutX="125.0" layoutY="93.0" prefHeight="35.0" prefWidth="559.0" />
+    <Label layoutX="126.0" layoutY="137.0" text="First Name" />
+    <TextField fx:id="firstName" layoutX="125.0" layoutY="154.0" prefHeight="36.0" prefWidth="253.0" AnchorPane.bottomAnchor="527.0" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="432.0" AnchorPane.topAnchor="154.0" />
+    <Label layoutX="406.0" layoutY="137.0" text="Last Name" />
+    <TextField fx:id="lastName" layoutX="406.0" layoutY="155.0" prefHeight="35.0" prefWidth="280.0" />
+    <Label layoutX="126.0" layoutY="196.0" text="Age" />
+    <TextField fx:id="age" layoutX="125.0" layoutY="214.0" prefHeight="35.0" prefWidth="253.0" />
+    <Label layoutX="406.0" layoutY="196.0" text="Role" />
+    <TextField fx:id="role" layoutX="406.0" layoutY="214.0" prefHeight="35.0" prefWidth="280.0" />
+    <Label layoutX="126.0" layoutY="256.0" text="Username" />
+    <TextField fx:id="username" layoutX="125.0" layoutY="274.0" prefHeight="35.0" prefWidth="253.0" />
+    <Label layoutX="405.0" layoutY="256.0" text="Password" />
+    <TextField fx:id="password" layoutX="406.0" layoutY="274.0" prefHeight="35.0" prefWidth="280.0" />
+    <Label layoutX="126.0" layoutY="316.0" text="Secret Question" />
+    <TextField fx:id="secretQ" layoutX="125.0" layoutY="334.0" prefHeight="35.0" prefWidth="559.0" />
+    <Label layoutX="126.0" layoutY="376.0" text="Secret Answer" />
+    <TextField fx:id="secretA" layoutX="125.0" layoutY="394.0" prefHeight="35.0" prefWidth="559.0" />
+
+    <Button defaultButton="true" layoutX="127.0" layoutY="454.0" mnemonicParsing="false" onAction="#checkUsernameExists" prefHeight="35.0" prefWidth="559.0" text="Register" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="228.0" AnchorPane.leftAnchor="127.0" AnchorPane.rightAnchor="124.0" AnchorPane.topAnchor="454.0">
+        <font>
+            <Font name="System Font" size="13.0" />
+        </font>
+    </Button>
+    <Label fx:id="errorMessage" layoutX="130.0" layoutY="518.0" prefHeight="17.0" prefWidth="559.0" text="Error Message" textFill="#e11212" />
+</AnchorPane>
