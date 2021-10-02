@@ -1,0 +1,120 @@
+{
+    "files.associations": {
+<<<<<<< HEAD
+        "algorithm": "cpp",
+        "array": "cpp",
+        "cctype": "cpp",
+=======
+>>>>>>> fd1c8f4f3c73817bbb0da8e3479eee7af56371f5
+        "cmath": "cpp",
+        "concepts": "cpp",
+        "cstddef": "cpp",
+        "cstdint": "cpp",
+        "cstdio": "cpp",
+        "cstdlib": "cpp",
+        "cstring": "cpp",
+        "cwchar": "cpp",
+        "exception": "cpp",
+<<<<<<< HEAD
+        "fstream": "cpp",
+=======
+>>>>>>> fd1c8f4f3c73817bbb0da8e3479eee7af56371f5
+        "initializer_list": "cpp",
+        "ios": "cpp",
+        "iosfwd": "cpp",
+        "iostream": "cpp",
+        "istream": "cpp",
+<<<<<<< HEAD
+        "iterator": "cpp",
+=======
+>>>>>>> fd1c8f4f3c73817bbb0da8e3479eee7af56371f5
+        "limits": "cpp",
+        "memory": "cpp",
+        "new": "cpp",
+        "ostream": "cpp",
+<<<<<<< HEAD
+        "random": "cpp",
+        "sstream": "cpp",
+        "stdexcept": "cpp",
+        "streambuf": "cpp",
+        "string": "cpp",
+=======
+        "stdexcept": "cpp",
+        "streambuf": "cpp",
+>>>>>>> fd1c8f4f3c73817bbb0da8e3479eee7af56371f5
+        "system_error": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "typeinfo": "cpp",
+        "utility": "cpp",
+<<<<<<< HEAD
+        "vector": "cpp",
+=======
+>>>>>>> fd1c8f4f3c73817bbb0da8e3479eee7af56371f5
+        "xfacet": "cpp",
+        "xiosbase": "cpp",
+        "xlocale": "cpp",
+        "xlocinfo": "cpp",
+        "xlocnum": "cpp",
+        "xmemory": "cpp",
+        "xstddef": "cpp",
+        "xstring": "cpp",
+        "xtr1common": "cpp",
+<<<<<<< HEAD
+        "xutility": "cpp"
+=======
+        "xutility": "cpp",
+        "cctype": "cpp",
+        "string": "cpp",
+        "any": "cpp",
+        "array": "cpp",
+        "atomic": "cpp",
+        "bit": "cpp",
+        "*.tcc": "cpp",
+        "bitset": "cpp",
+        "cfenv": "cpp",
+        "charconv": "cpp",
+        "chrono": "cpp",
+        "cinttypes": "cpp",
+        "clocale": "cpp",
+        "codecvt": "cpp",
+        "complex": "cpp",
+        "condition_variable": "cpp",
+        "csetjmp": "cpp",
+        "csignal": "cpp",
+        "cstdarg": "cpp",
+        "ctime": "cpp",
+        "cuchar": "cpp",
+        "cwctype": "cpp",
+        "deque": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp",
+        "map": "cpp",
+        "set": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "vector": "cpp",
+        "algorithm": "cpp",
+        "functional": "cpp",
+        "iterator": "cpp",
+        "memory_resource": "cpp",
+        "numeric": "cpp",
+        "optional": "cpp",
+        "random": "cpp",
+        "ratio": "cpp",
+        "regex": "cpp",
+        "string_view": "cpp",
+        "fstream": "cpp",
+        "future": "cpp",
+        "iomanip": "cpp",
+        "mutex": "cpp",
+        "scoped_allocator": "cpp",
+        "shared_mutex": "cpp",
+        "sstream": "cpp",
+        "thread": "cpp",
+        "typeindex": "cpp",
+        "valarray": "cpp",
+        "variant": "cpp"
+>>>>>>> fd1c8f4f3c73817bbb0da8e3479eee7af56371f5
+    }
+}
