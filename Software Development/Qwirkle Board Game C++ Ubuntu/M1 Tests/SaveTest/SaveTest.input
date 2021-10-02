@@ -1,0 +1,6 @@
+2
+newGameSave.save
+place B5 at O15
+replace Y2
+save newGameSave
+quit

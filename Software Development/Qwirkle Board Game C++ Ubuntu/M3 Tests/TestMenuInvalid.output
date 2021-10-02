@@ -1,0 +1,41 @@
+
+Welcome to Qwirkle!
+-------------------
+
+Menu
+----
+1. New Game
+2. Load Game
+3. Credits
+4. Quit
+5. Help Enhancement: OFF
+6. Invalid Enhancement: OFF
+
+> 6
+
+Menu
+----
+1. New Game
+2. Load Game
+3. Credits
+4. Quit
+5. Help Enhancement: OFF
+6. Invalid Enhancement: ON
+
+> helloworld
+
+INVALID option! 'helloworld' is not valid because,
+you can only input: '1','2','3','4','5','6'
+
+Menu
+----
+1. New Game
+2. Load Game
+3. Credits
+4. Quit
+5. Help Enhancement: OFF
+6. Invalid Enhancement: ON
+
+> 4
+
+Goodbye!

@@ -1,0 +1,45 @@
+
+Welcome to Qwirkle!
+-------------------
+
+Menu
+----
+1. New Game
+2. Load Game
+3. Credits
+4. Quit
+5. Help Enhancement: OFF
+6. Invalid Enhancement: OFF
+
+> 6
+
+Menu
+----
+1. New Game
+2. Load Game
+3. Credits
+4. Quit
+5. Help Enhancement: OFF
+6. Invalid Enhancement: ON
+
+> 2
+
+Loading Saved Game...
+---------------------
+
+Please enter file name (with '.save'): 
+> helloworld
+INVALID! Input the name of saved game file that exists.
+
+Menu
+----
+1. New Game
+2. Load Game
+3. Credits
+4. Quit
+5. Help Enhancement: OFF
+6. Invalid Enhancement: ON
+
+> 4
+
+Goodbye!
