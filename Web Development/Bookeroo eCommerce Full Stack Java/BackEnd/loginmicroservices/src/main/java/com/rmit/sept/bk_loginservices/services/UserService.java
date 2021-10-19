@@ -53,7 +53,7 @@ public class UserService {
     public User updateUser(User userDetails, String username) {
         try {
             User updateUser = userRepository.findByUsername(username);
-            updateUser.setPassword(bCryptPasswordEncoder.encode(userDetails.getPassword()));
+            updateUser.setPassword(userDetails.getPassword());
             updateUser.setUsername(userDetails.getUsername());
             updateUser.setFullname(userDetails.getFullname());
             updateUser.setAddress(userDetails.getAddress());
@@ -63,7 +63,7 @@ public class UserService {
             updateUser.setRegisterstatus(userDetails.getRegisterstatus());
             return userRepository.save(updateUser);
         } catch (Exception e){
-            throw new UsernameAlreadyExistsException("Username '"+userDetails.getUsername()+"' already exists or not found");
+            throw new UsernameAlreadyExistsException("Cannot update user: '"+userDetails.getUsername());
         }
     }
 
@@ -119,5 +119,15 @@ public class UserService {
     // finds all users in the database
     public List<User> findAllUsers(){
         return userRepository.findAll();
+    }
+    
+    // finds a single user
+    public User findUser(String username) {
+    	try {
+    		return userRepository.findByUsername(username);
+    	} catch (Exception e){
+    		throw new UsernameAlreadyExistsException(username + " cannot be found");
+    	}
+    	
     }
 }

@@ -4,7 +4,6 @@ import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
-import java.math.BigDecimal;
 
 @Entity
 public class Book {
@@ -22,7 +21,6 @@ public class Book {
     private String author;
     // Books unique ISBN
     @NotBlank(message = "Please enter an ISBN")
-    @Pattern(regexp = "^\\d{13}$", message = "Please enter a 13 digit ISBN")
     @Column(unique = true)
     private String isbn;
     // Book category
@@ -39,6 +37,12 @@ public class Book {
     // Books stock level
     @NotNull(message = "Please enter a stock level")
     private Integer stocklevel;
+    // Books type - used or new book
+    @NotNull(message = "Please enter a book type")
+    private boolean newbook;
+    // Book availability - buy or loan 
+    @NotNull(message = "Please enter a books availability")
+    private boolean loanedbook;
     // Book cover image URL
     @NotBlank(message = "Please enter a cover image URL")
     @URL
@@ -114,7 +118,7 @@ public class Book {
 		this.stocklevel = stocklevel;
 	}
 	
-/*	public boolean isNewbook() {
+	public boolean isNewbook() {
 		return newbook;
 	}
 
@@ -128,7 +132,7 @@ public class Book {
 
 	public void setLoanedBook(boolean loanedBook) {
 		this.loanedbook = loanedBook;
-	}*/
+	}
 
 	public String getCoverurl() {
 		return coverurl;
@@ -145,14 +149,4 @@ public class Book {
 	public void setContenturl(String contenturl) {
 		this.contenturl = contenturl;
 	}
-
-	
-	 // Books type is used or new book
-	/*    @NotBlank(message = "Please enter a book type")
-	    private boolean newbook;
-	    // Book availability - buy or loan 
-	    @NotBlank(message = "Please enter a books availability")
-	    private boolean loanedbook;*/
-   
-	
 }

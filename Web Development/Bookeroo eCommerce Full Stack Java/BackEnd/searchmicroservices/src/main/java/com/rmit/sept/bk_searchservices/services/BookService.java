@@ -29,8 +29,8 @@ public class BookService {
             newBook.setPrice(newBook.getPrice());
             newBook.setSeller(newBook.getSeller());
             newBook.setStocklevel(newBook.getStocklevel());
-           // newBook.setLoanedBook(newBook.isLoanedBook());
-         //   newBook.setNewbook(newBook.isNewbook());
+            newBook.setLoanedBook(newBook.isLoanedBook());
+            newBook.setNewbook(newBook.isNewbook());
             newBook.setCoverurl(newBook.getCoverurl());
             newBook.setContenturl(newBook.getContenturl());
             return bookRepository.save(newBook);
@@ -51,13 +51,13 @@ public class BookService {
             updateBook.setPrice(bookDetails.getPrice());
             updateBook.setSeller(bookDetails.getSeller());
             updateBook.setStocklevel(bookDetails.getStocklevel());;
-          //  updateBook.setLoanedBook(bookDetails.isLoanedBook());
-           // updateBook.setNewbook(bookDetails.isNewbook());
+            updateBook.setLoanedBook(bookDetails.isLoanedBook());
+            updateBook.setNewbook(bookDetails.isNewbook());
             updateBook.setCoverurl(bookDetails.getCoverurl());;
             updateBook.setContenturl(bookDetails.getContenturl());
             return bookRepository.save(updateBook);
         } catch (Exception e){
-            throw new BookAlreadyExistsException("Book with isbn: '" + bookDetails.getIsbn() + "', already exists or not found");
+            throw new BookAlreadyExistsException("Book with isbn: '" + bookDetails.getIsbn() + "', cannot be updated");
         }
     }
 
@@ -169,45 +169,6 @@ public class BookService {
     public List<Book> findAllBooks(){
         return bookRepository.findAll();
     }
-    
-/*    // check book is onloan
-    public boolean checkLoan(String isbn) {
- 	   try {
- 		  Book book = bookRepository.findByIsbn(isbn);
- 		   if (book.isLoanedBook()) {
- 			   return true;
- 		   } else {
- 			   return false;
- 		   }
- 		  } catch (Exception e) {
- 			   throw new BookAlreadyExistsException("Book is not onloan");
- 		   } 
- 	   }
-    
-    
-    // changes book loan status to true
-    public Book onLoan(String isbn) {
-    	try {
-    	    boolean isNewBook = false;
-    		Book book = bookRepository.findByIsbnAndNewBook(isbn, isNewBook);
-    		book.setLoanedBook(true);
-    		return bookRepository.save(book);
-    	} catch (Exception e) {
-    		throw new BookAlreadyExistsException("Books loan status cannot be changed");
-    	}
-    }
-    
-    // changes book lone status to false
-    public Book bookReturned(String isbn) {
-    	try {
-    		boolean isNewBook = false;
-    		Book book = bookRepository.findByIsbnAndNewBook(isbn, isNewBook);
-    		book.setLoanedBook(false);
-    		return bookRepository.save(book);
-    	} catch (Exception e) {
-    		throw new BookAlreadyExistsException("Books loan status cannot be changed");
-    	}
-    }*/
      
    // Basic info book list
    public void quickBookListCsv(Writer writer) {

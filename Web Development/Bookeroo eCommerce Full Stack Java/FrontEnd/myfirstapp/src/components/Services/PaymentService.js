@@ -10,6 +10,10 @@ class PaymentService {
   get(backendLocationUrl) {
     return axios.get(PAYMENT_REST_API_URL + backendLocationUrl);
   }
+
+  patch(backendLocationUrl, backendDataBody) {
+    return axios.patch(PAYMENT_REST_API_URL + backendLocationUrl, backendDataBody);
+  }
 }
 
 export default new PaymentService();

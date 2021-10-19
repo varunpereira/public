@@ -10,6 +10,7 @@ class Landing extends Component {
       username: "",
       token: "",
       books: [],
+      loantype: "",
     };
     if (this.props.location.state !== undefined) {
       this.state.username = this.props.location.state.username;
@@ -18,11 +19,11 @@ class Landing extends Component {
   }
 
   componentDidMount() {
-    SearchResultsService.getSearchResults(
-      "/search/allBooks"
-    ).then((response) => {
-      this.setState({ books: response.data });
-    });
+    SearchResultsService.getSearchResults("/search/allBooks").then(
+      (response) => {
+        this.setState({ books: response.data });
+      }
+    );
   }
 
   render() {
@@ -43,36 +44,32 @@ class Landing extends Component {
                   <thead>
                     <tr>
                       <td> Book Name</td>
-                      <td> Book Author</td>
+                      <td> Book Seller</td>
                       <td> Book ISBN</td>
-                      <td> Book Category</td>
+                      <td> New Book</td>
+                      {/* <td> Loaned Book</td> */}
                     </tr>
                   </thead>
                   <tbody>
                     {this.state.books.map((book) => (
-                      <tr key={book.name}>
+                      <tr key={book.bookid}>
                         <td>
                           <Link
                             to={{
                               pathname: "/book-details",
                               state: {
                                 username: this.state.username,
-                                bookName: book.name,
                                 bookIsbn: book.isbn,
-                                bookAuthor: book.author,
-                                bookCategory: book.category,
-                                bookPrice: book.price,
-                                bookSeller: book.seller,
                               },
                             }}
                           >
                             {book.name}
                           </Link>
                         </td>
-
-                        <td> {book.author}</td>
+                        <td> {book.seller}</td>
                         <td> {book.isbn}</td>
-                        <td> {book.category}</td>
+                        <td> {String(book.newbook)}</td>
+                        {/* <td>{String(book.loanedbook)}</td> */}
                       </tr>
                     ))}
                   </tbody>
@@ -84,8 +81,6 @@ class Landing extends Component {
       </div>
     );
   }
-
-
 }
 
 export default Landing;

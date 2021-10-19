@@ -1,20 +1,4 @@
-# RMIT SEPT 2021 Major Project
-
-# Group Day-Time
-
-## Members
-* Maalik Nievaart 
-* Kosta Barba 
-* Manh Quynh Jason Le
-* John Kairus Delgado
-* Varun Pereira
-
-## Records
-
-* Github Repository :https://github.com/SEPT-Team-9 
-* Jira Board : https://sept-team9.atlassian.net/jira/software/projects/OBSA/boards/1/backlog
-* Microsoft Teams : https://teams.microsoft.com/l/channel/19%3aZ-GXCFkZI3Z4wH62EYm9VQhMfmEPB9JAo7i-rNBMwO01%40thread.tacv2/General?groupId=0af78323-1b67-4204-9f63-c2f3b4c4122a&tenantId=d1323671-cdbe-4417-b4d4-bdb24b51316b  
-
+# Bookeroo Web App
 	
 ## Code documentation - Release 0.1.0 - date
 * feature 1

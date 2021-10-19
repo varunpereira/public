@@ -24,7 +24,7 @@ public class ReviewService {
             return reviewRepository.save(newReview);
 
         } catch (Exception e){
-            throw new ReviewAlreadyExistsException("Review with: '" + newReview.getReviewid() + "', already exists");
+            throw new ReviewAlreadyExistsException("Review cannot be created");
         }
     }
 
@@ -39,7 +39,7 @@ public class ReviewService {
             return reviewRepository.save(updateReview);
 
         } catch (Exception e){
-            throw new ReviewAlreadyExistsException("Review with: '" + reviewDetails.getReviewid() + "', already exists or not found");
+            throw new ReviewAlreadyExistsException("Review cannot be updated");
         }
     }
 

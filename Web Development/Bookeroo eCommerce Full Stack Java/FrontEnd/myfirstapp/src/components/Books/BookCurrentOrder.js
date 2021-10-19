@@ -20,6 +20,7 @@ class BookCurrentOrder extends Component {
     }
     //allows you to access state variables in other functions
     this.pay = this.pay.bind(this);
+    this.cancel = this.cancel.bind(this);
   }
 
   componentDidMount() {
@@ -84,6 +85,17 @@ class BookCurrentOrder extends Component {
     }
   }
 
+  async cancel(orderitemid) {
+    document.getElementById("error").innerHTML = "Item Cancelled";
+    OrderService.delete("/cancelOrderItem/" + orderitemid).then((response1) => {
+      OrderService.post("/findOrders/" + this.state.username).then(
+        (response2) => {
+          this.setState({ currentOrder: response2.data });
+        }
+      );
+    });
+  }
+
   render() {
     return (
       <div>
@@ -91,14 +103,12 @@ class BookCurrentOrder extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-6 text-center">
-                Hi "{this.state.username}"
-              </h1>
-              <h1 className="display-4 text-center">
-                Your Current Order <br></br> order group:{" "}
+              <h1 className="display-6 text-center">Your Current Order</h1>
+              <p className="text-center">
+                username: {this.state.username} <br></br> order group:
                 {this.state.currentOrderGroup} <br></br> order price: $
                 {this.state.orderPrice}
-              </h1>
+              </p>
             </div>
           </div>
           <div className="row">
@@ -109,6 +119,9 @@ class BookCurrentOrder extends Component {
                     <td> ISBN</td>
                     <td> Quantity</td>
                     <td> Item Price</td>
+                    <td> New Book</td>
+                    {/* <td> Loaned Book</td> */}
+                    <td> </td>
                   </tr>
                 </thead>
                 <tbody>
@@ -117,6 +130,13 @@ class BookCurrentOrder extends Component {
                       <td> {item.isbn}</td>
                       <td> {item.quantity}</td>
                       <td> {item.itemprice}</td>
+                      <td> {String(item.newbook)}</td>
+                      {/* <td> {String(item.loanedbook)}</td> */}
+                      <td>
+                        <Link onClick={async () => this.cancel(item.orderid)}>
+                          cancel
+                        </Link>
+                      </td>
                     </tr>
                   ))}
                 </tbody>

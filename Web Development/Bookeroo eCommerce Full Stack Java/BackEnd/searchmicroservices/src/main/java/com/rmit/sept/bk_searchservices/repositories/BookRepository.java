@@ -29,8 +29,6 @@ public interface BookRepository extends CrudRepository<Book, Long> {
     List<Book> findAll();
     // checks if the book exists
     boolean existsByIsbn(String isbn);
-    // Finds the book by isbn and stock level
-    //boolean findByIsbnAndStock(String isbn, Integer amount);
     // Finds the book by isbn and book type
-    //Book findByIsbnAndNewBook(String isbn, boolean newbook);
+    Book findByIsbnAndNewbook(String isbn, boolean newbook);
 }

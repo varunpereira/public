@@ -4,7 +4,6 @@ import com.rmit.sept.bk_orderservices.model.*;
 import com.rmit.sept.bk_orderservices.repositories.OrderRepository;
 import com.rmit.sept.bk_orderservices.services.*;
 
-import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +11,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Date;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -82,31 +80,18 @@ public class OrderController {
     @PatchMapping("/updateConfirmStatus/{username}")
     public ResponseEntity<?> updateBookDetails(@PathVariable(value = "username") String username){
      
-     List<Order> updateOrder = orderService.updateOrder(username);
+     orderService.updateOrder(username);
 
      return new ResponseEntity<Boolean>(true, HttpStatus.CREATED);
     }
 
     // User interaction
     
-    // cancels the order in the database
-    @DeleteMapping("/cancelOrder/{id}")
-    public ResponseEntity<String> cancelOrderByID (@PathVariable(value = "id") Long id) {
-        try {
-            Order order = orderRepository.findByOrderid(id);
-            Date orderDateTime = order.getDatetime();
-            Date newDate = DateUtils.addHours(orderDateTime, 2);
-            Date now = new Date();
-            // checks if order has been canceled after two hours
-            if(now.before(newDate)) {
-                orderService.cancelOrder(id);
-                return new ResponseEntity<String>("Order with id: " + id  + " deleted", HttpStatus.OK);
-            } else {
-                return new ResponseEntity<String>("Order cannot be canceled after two hours after the item is ordered", HttpStatus.OK);
-            }
-        } catch (Exception e){
-            return new ResponseEntity<String>("Order with: " + id + " does not exist", HttpStatus.BAD_REQUEST);
-        }
+    //  cancel current order
+    @DeleteMapping("/cancelOrderItem/{id}")
+    public ResponseEntity<?> cancelOrder (@PathVariable(value = "id") Long id) {
+        	orderService.cancelOrderItem(id);
+            return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
     
     // Order history
@@ -115,6 +100,17 @@ public class OrderController {
     @PostMapping("/findOrders/{username}")
     public List<Order> findOrdersByUser(@PathVariable(value = "username") String username){
         return orderService.findOrders(username);
+    }
+    
+   // finds order's by ordergroup
+    @PostMapping("/findOrdersByGroup/{ordergroup}")
+    public List<Order> findOrdersByGroup(@PathVariable(value = "ordergroup") Integer ordergroup){
+        return orderService.findOrdersByOrderGroup(ordergroup);
+    }
+
+    @PostMapping("/findPastOrders/{username}")
+    public List<Order> findPastOrdersByUser(@PathVariable(value = "username") String username){
+        return orderService.findPastOrders(username);
     }
     
     // Review for user interaction

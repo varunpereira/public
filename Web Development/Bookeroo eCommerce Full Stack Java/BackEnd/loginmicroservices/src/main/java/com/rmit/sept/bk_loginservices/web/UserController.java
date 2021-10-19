@@ -142,4 +142,10 @@ public class UserController {
             return new ResponseEntity<String>("Does not exist", HttpStatus.OK);
         }
     }
+    
+    // returns a user
+    @PostMapping("/findUser/{username}")
+    public User viewUser(@PathVariable(value = "username") String username){
+        return userService.findUser(username);
+    }
 }

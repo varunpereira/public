@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import UserService from "../Services/UserService";
 
 class Header extends Component {
   //uses logout button or closes window but wb changing url - publicpage/username
@@ -11,6 +12,7 @@ class Header extends Component {
       headerUsername: "",
       searchTerm: "",
       searchCategory: "all",
+      accountType: "",
     };
     if (this.state.headerUsername !== null) {
       this.state.headerUsername = this.props.headerUsername;
@@ -19,6 +21,17 @@ class Header extends Component {
     this.changeSearchTermHandler = this.changeSearchTermHandler.bind(this);
     this.changeSearchCategoryHandler =
       this.changeSearchCategoryHandler.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.state.headerUsername !== null) {
+      this.state.headerUsername = this.props.headerUsername;
+      UserService.post("/findUser/" + this.state.headerUsername).then(
+        (response) => {
+          this.setState({ accountType: response.data.accounttype });
+        }
+      );
+    }
   }
 
   changeSearchTermHandler = (event) => {
@@ -151,8 +164,122 @@ class Header extends Component {
                     </a>
                   </li>
                 </ul>
+              ) : this.state.accountType == "Admin" ? (
+                <ul className="navbar-nav ml-auto">
+                  <li className="nav-item">
+                    <div className="dropdown show">
+                      <div
+                        className="btn navbar-dark text-light dropdown-toggle"
+                        role="button"
+                        id="dropdownMenuLink"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        Manage
+                      </div>
+                      <div
+                        className="dropdown-menu "
+                        aria-labelledby="dropdownMenuLink"
+                      >
+                        <Link
+                          to={{
+                            pathname:
+                              "/admin/manageusers/" + this.props.headerUsername,
+                            state: {
+                              username: this.props.headerUsername,
+                            },
+                          }}
+                          className="dropdown-item"
+                        >
+                          Users
+                        </Link>
+                        <Link
+                          to={{
+                            pathname:
+                              "/admin/managebooks/" + this.props.headerUsername,
+                            state: {
+                              username: this.props.headerUsername,
+                            },
+                          }}
+                          className="dropdown-item"
+                        >
+                          Books
+                        </Link>
+                        <Link
+                          to={{
+                            pathname:
+                              "/admin/managepayments/" +
+                              this.props.headerUsername,
+                            state: {
+                              username: this.props.headerUsername,
+                            },
+                          }}
+                          className="dropdown-item"
+                        >
+                          Payments
+                        </Link>
+                        <Link
+                          to={{
+                            pathname:
+                              "/admin/managereports/" +
+                              this.props.headerUsername,
+                            state: {
+                              username: this.props.headerUsername,
+                            },
+                          }}
+                          className="dropdown-item"
+                        >
+                          Reports
+                        </Link>
+                      </div>
+                    </div>
+                  </li>
+                  <li className="nav-item">
+                    <div className="dropdown show">
+                      <div
+                        className="btn navbar-dark text-light dropdown-toggle"
+                        role="button"
+                        id="dropdownMenuLink"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        {this.props.headerUsername}
+                      </div>
+
+                      <div
+                        className="dropdown-menu"
+                        aria-labelledby="dropdownMenuLink"
+                      >
+                        <Link
+                          to={{
+                            pathname: "/login",
+                          }}
+                          className="dropdown-item"
+                        >
+                          Logout
+                        </Link>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
               ) : (
                 <ul className="navbar-nav ml-auto">
+                     <li className="nav-item">
+                    <Link
+                      to={{
+                        pathname:
+                          "/book-sellbook/" + this.props.headerUsername,
+                        state: {
+                          username: this.props.headerUsername,
+                        },
+                      }}
+                      className="nav-link"
+                    >
+                      Sell
+                    </Link>
+                  </li>
                   <li className="nav-item">
                     <Link
                       to={{
@@ -176,7 +303,6 @@ class Header extends Component {
                         data-toggle="dropdown"
                         aria-haspopup="true"
                         aria-expanded="false"
-                        
                       >
                         {this.props.headerUsername}
                       </div>
@@ -184,10 +310,19 @@ class Header extends Component {
                       <div
                         className="dropdown-menu"
                         aria-labelledby="dropdownMenuLink"
-                        style={{}}
                       >
-                        <div className="dropdown-item">Past Orders</div>
-                        <div className="dropdown-item">Settings</div>
+                        <Link
+                          to={{
+                            pathname:
+                              "/book-pastpayments/" + this.props.headerUsername,
+                            state: {
+                              username: this.props.headerUsername,
+                            },
+                          }}
+                          className="dropdown-item"
+                        >
+                          Transactions
+                        </Link>
                         <Link
                           to={{
                             pathname: "/login",

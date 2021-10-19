@@ -147,32 +147,6 @@ public class BookController {
         return new ResponseEntity<Boolean>(true, HttpStatus.CREATED);
     }
     
-    // For book sharing - used books only
-    
-  /*  // Check book is on loan
-    @PostMapping("/checkLoan/{isbn}")
-    public boolean checkBookIsLoaned(@PathVariable(value = "isbn") String isbn){
-    	return bookService.checkLoan(isbn);
-    }
-    
-    // Change book on loan to true
-    @PatchMapping("/onLoan/{isbn}")
-    public ResponseEntity<?> onLoanTrue(@PathVariable(value = "isbn") String isbn){
-    	
-    	bookService.onLoan(isbn);
-        
-        return new ResponseEntity<String>("Book is now on loan", HttpStatus.CREATED);
-    }
-    
-    // Change book on loan to false
-    @PatchMapping("/returnBook/{isbn}")
-    public ResponseEntity<?> onLoanFalse(@PathVariable(value = "isbn") String isbn){
-    	
-    	bookService.bookReturned(isbn);
-        
-        return new ResponseEntity<String>("Book is now returned", HttpStatus.CREATED);
-    }*/
-    
     // Download csv file for Basic Book List
     @GetMapping("/bookListBasic")
     public void getBookBasic(HttpServletResponse servletResponse) throws IOException  {

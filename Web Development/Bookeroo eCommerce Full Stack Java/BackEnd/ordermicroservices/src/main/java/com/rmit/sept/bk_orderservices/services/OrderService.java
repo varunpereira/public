@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
-import javax.validation.Valid;
-
 @Service
 public class OrderService {
 
@@ -27,11 +25,12 @@ public class OrderService {
             newOrder.setItemprice(newOrder.getItemprice());
             double totalItemPrice = newOrder.getQuantity() * newOrder.getItemprice();
             newOrder.setItemprice(totalItemPrice);
-         //   newOrder.setNewbook(newOrder.isNewbook());
+            newOrder.setNewbook(newOrder.isNewbook());
+            newOrder.setLoanedbook(newOrder.isLoanedbook());
             return orderRepository.save(newOrder);
 
         } catch (Exception e){
-            throw new OrderAlreadyExistsException("Order with: '" + newOrder.getOrderid() + "', already exists");
+            throw new OrderAlreadyExistsException("Order cannot be created");
         }
     }
     
@@ -46,18 +45,17 @@ public class OrderService {
             }
             return (List<Order>) orderRepository.saveAll(updateOrder);
         } catch (Exception e){
-            throw new OrderAlreadyExistsException("Order already exists or not found");
+            throw new OrderAlreadyExistsException("Cannot update order");
         }
     }
 
-    // deletes the order record in the database
-    public void cancelOrder(Long id) {
+    // cancel current order
+    public void cancelOrderItem(Long id) {
         try {
                 Order order = orderRepository.findByOrderid(id);
-                // code for refund request (when service completed)
                 orderRepository.delete(order);
         } catch (Exception e){
-            throw new OrderAlreadyExistsException("Order with: '" + id + "', does not exist");
+            throw new OrderAlreadyExistsException("Cannot cancel order item");
         }
     }
 
@@ -83,7 +81,28 @@ public class OrderService {
         }
     }
     
-    // returns a user if they ordered something from the seller
+    // finds all orders by order group
+    public List<Order> findOrdersByOrderGroup(Integer ordergroup){
+        try{
+            List<Order> orders = orderRepository.findAllByOrdergroup(ordergroup);
+            return orders;
+        } catch (Exception e){
+            throw new OrderAlreadyExistsException("Orders not found");
+        }
+    }
+    
+    // finds past orders by username
+    public List<Order> findPastOrders(String username){
+        try{
+        	boolean isCurrentOrder = false;
+            List<Order> orders = orderRepository.findAllByCurrentorderAndBuyerusername(isCurrentOrder, username);
+            return orders;
+        } catch (Exception e){
+            throw new OrderAlreadyExistsException("Orders with " + username +  " not found");
+        }
+    }
+    
+    // returns a list of users if they ordered something from the seller
     public List<Order> findSeller(String buyerusername,  String sellerUsername){
         try {
             List<Order> seller = orderRepository.findAllByBuyerusernameAndSellerusername(buyerusername, sellerUsername);
@@ -115,7 +134,7 @@ public class OrderService {
             }
             return (List<Order>) orderRepository.saveAll(updateOrderPrice);
         } catch (Exception e){
-            throw new OrderAlreadyExistsException("Order already exists or not found");
+            throw new OrderAlreadyExistsException("Cannot update order price");
         }
     }
 

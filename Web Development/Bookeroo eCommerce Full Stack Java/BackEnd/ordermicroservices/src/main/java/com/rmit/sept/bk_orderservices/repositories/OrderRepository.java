@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,6 +17,8 @@ public interface OrderRepository extends CrudRepository<Order, Long> {
     Order findByOrderid(Long id);
     // Finds orders by username
     List<Order> findAllByOrdergroupAndBuyerusername(Integer group, String buyerusername);
+    // Finds order an by username
+   // Order findByOrdergroupAndBuyerusername(Integer group, String buyerusername);
     // Finds order's by status for given username
     List<Order> findAllByCurrentorderAndBuyerusername(boolean currentOrder, String buyerusername);
 	// Find orders by username
@@ -25,10 +28,9 @@ public interface OrderRepository extends CrudRepository<Order, Long> {
 	// Exists by ID
 	boolean existsByOrderid(Long id);
 	// Sum order price
-	@Query(value = "SELECT SUM(itemprice) FROM Orders WHERE buyerusername =:buyerusername AND ordergroup =:ordergroup", nativeQuery = true)
-	double findByOrderPrice(@Param("buyerusername") String buyerusername, @Param("ordergroup") Integer ordergroup); 
-	// Finds the book by isbn and book type
-    //Order findByIsbnAndBooktype(String isbn, String booktype);
-    // Check book lone
-    Order findByIsbn(String isbn);
+	@Transactional
+	@Query(value = "SELECT SUM(itemprice) FROM orders WHERE buyerusername =:buyerusername AND ordergroup =:ordergroup", nativeQuery = true)
+	double findByOrderPrice(@Param("buyerusername") String buyerusername, @Param("ordergroup") Integer ordergroup);
+	// Find order by order group
+	List<Order> findAllByOrdergroup(Integer ordergroup);
 }

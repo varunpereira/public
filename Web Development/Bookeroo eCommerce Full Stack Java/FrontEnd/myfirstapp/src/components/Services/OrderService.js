@@ -15,6 +15,10 @@ class OrderService {
     return axios.patch(ORDER_REST_API_URL + backendLocationUrl, backendDataBody);
   }
 
+  delete(backendLocationUrl, backendDataBody) {
+    return axios.delete(ORDER_REST_API_URL + backendLocationUrl, backendDataBody);
+  }
+
 }
 
 export default new OrderService();

@@ -2,6 +2,7 @@ package com.rmit.sept.bk_loginservices.services;
 
 import com.rmit.sept.bk_loginservices.model.User;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.MethodOrderer.Alphanumeric;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.Assert.*;
@@ -9,6 +10,7 @@ import java.util.List;
 
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@TestMethodOrder(Alphanumeric.class)
 class UserServiceTest {
 	
 	User user;
@@ -34,7 +36,7 @@ class UserServiceTest {
     }
 
     @Test
-    void updateUser() {
+    void AupdateUser() {
         // Update user
         user.setFullname("Tim Roberts");
         user.setAddress("10 Hill Road");
@@ -49,7 +51,7 @@ class UserServiceTest {
     }
 
 	@Test
-    void updateToken() {
+    void BupdateToken() {
         // Update Token
         user.setToken("123456789");
         userService.updateToken("123456789", "bobroberts@gmail.com");
@@ -58,7 +60,7 @@ class UserServiceTest {
     }
 
     @Test
-    void compareToken() {
+    void CcompareToken() {
         // Finds token
         user = userService.compareToken(user.getUsername(), user.getToken());
 		assertEquals("bobroberts@gmail.com", user.getUsername());
@@ -66,9 +68,8 @@ class UserServiceTest {
 		System.out.println("Token found");
     }
 
-
     @Test
-    void userStatus() {
+    void DuserStatus() {
         // Check status
 		assertEquals(false, userService.userStatus("bobroberts@gmail.com"));
 		System.out.println("Status checked");
@@ -76,14 +77,23 @@ class UserServiceTest {
 	
 
     @Test
-    void userExists() {
+    void EuserExists() {
         // Check if exists
 		assertEquals(true, userService.userExists("bobroberts@gmail.com"));
         System.out.println("User exists");
     }
+    
+    @Test
+    void FfindUser() {
+    	// Finds a single user
+    	String username = "bobroberts@gmail.com";
+    	User user = userService.findUser(username);
+    	assertEquals(username, user.getUsername());
+    	System.out.println("User found");
+    }
 
     @Test
-    void findAllUsers() {
+    void GfindAllUsers() {
         // Finds all users
         List<User> users = userService.findAllUsers();
         assertEquals(1, users.size());

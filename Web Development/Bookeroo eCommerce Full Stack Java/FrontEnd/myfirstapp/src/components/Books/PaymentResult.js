@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PaymentService from "../Services/PaymentService";
+import OrderService from "../Services/OrderService";
 import Header from "../Layout/Header";
-import axios from "axios";
 
 class PaymentResult extends Component {
   constructor(props) {
@@ -14,30 +14,25 @@ class PaymentResult extends Component {
 
   componentDidMount() {
     //send a LoginRequest Object instead with username and token
-    axios
-      .get("http://localhost:1008/api/payment/success" + window.location.search)
-      .then((response) => {
-        this.setState({ username: response.data });
-        const { id } = this.props.match.params;
-        if (this.state.username != id) {
-          this.props.history.push({
-            pathname: "/login",
-          });
-        } else {
-          axios
-            .patch(
-              "http://localhost:1004/api/order/updateConfirmStatus/" +
-                this.state.username
-            )
-            .then((response2) => {
-              if (response2.data != true) {
-                this.props.history.push({
-                  pathname: "/login",
-                });
-              }
-            });
-        }
-      });
+    PaymentService.get("/success" + window.location.search).then((response) => {
+      this.setState({ username: response.data });
+      const { id } = this.props.match.params;
+      if (this.state.username != id) {
+        this.props.history.push({
+          pathname: "/login",
+        });
+      } else {
+        OrderService.patch("/updateConfirmStatus/" + this.state.username).then(
+          (response2) => {
+            if (response2.data != true) {
+              this.props.history.push({
+                pathname: "/login",
+              });
+            }
+          }
+        );
+      }
+    });
   }
 
   render() {

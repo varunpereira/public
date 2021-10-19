@@ -37,7 +37,7 @@ class Login extends Component {
           pageChange = "/customer/home/" + this.state.username;
         } else if (userReceived.data.accounttype === "Publisher") {
           pageChange = "/publisher/home/" + this.state.username;
-        } else if (userReceived.data.accounttype === "Shope Owner") {
+        } else if (userReceived.data.accounttype === "Shop Owner") {
           pageChange = "/shop-owner/home/" + this.state.username;
         }
 

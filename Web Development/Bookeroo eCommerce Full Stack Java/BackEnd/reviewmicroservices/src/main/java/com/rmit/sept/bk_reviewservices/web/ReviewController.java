@@ -45,9 +45,9 @@ public class ReviewController {
             return errorMap;
         }
 
-        Review updateUser = reviewService.updateReview(review, bookname);
+        Review updateReview = reviewService.updateReview(review, bookname);
 
-        return new ResponseEntity<Review>(updateUser, HttpStatus.CREATED);
+        return new ResponseEntity<Review>(updateReview, HttpStatus.CREATED);
     }
 
     // deletes review

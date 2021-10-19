@@ -5,7 +5,7 @@ import javax.validation.constraints.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Orders")
+@Table(name = "orders")
 public class Order {
     // Primary Key
     @Id
@@ -21,7 +21,6 @@ public class Order {
     private String buyerusername;
     // Books isbn
     @NotBlank(message = "Please enter an ISBN")
-    @Pattern(regexp = "^\\d{13}$", message = "Please enter a 13 digit ISBN")
     private String isbn;
     // Book quantity
     @Min(value = 1, message = "Must have a minimum quantity of 1 book")
@@ -40,9 +39,12 @@ public class Order {
     // Order price
     @NotNull(message = "Please enter an order price")
     private double orderprice = 0;
-    // Books type is used or new book
-  //  @NotNull(message = "Please enter a book type")
-  //  private boolean newbook;
+    // Books type - used or new book
+    @NotNull(message = "Please enter a book type")
+    private boolean newbook;
+    // Book availability - buy or loan 
+    @NotNull(message = "Please enter a books availability")
+    private boolean loanedbook;
     // Timestamp of order
     private Date datetime;
 
@@ -120,13 +122,21 @@ public class Order {
 		this.orderprice = orderprice;
 	}
 	
-/*	public boolean isNewbook() {
+	public boolean isNewbook() {
 		return newbook;
 	}
 
 	public void setNewbook(boolean newbook) {
 		this.newbook = newbook;
-	}*/
+	}
+	
+	public boolean isLoanedbook() {
+		return loanedbook;
+	}
+
+	public void setLoanedbook(boolean loanedbook) {
+		this.loanedbook = loanedbook;
+	}
 
 	public Date getDatetime() {
 		return datetime;

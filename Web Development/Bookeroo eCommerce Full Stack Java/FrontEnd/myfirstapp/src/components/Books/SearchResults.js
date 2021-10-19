@@ -40,43 +40,43 @@ class SearchResults extends Component {
             <div className="col-md-8 m-auto">
               <h1 className="display-5 text-center">
                 {numRows} results in {this.state.searchType} for "
-                {this.state.searchTerm}" username: {this.state.username}
+                {this.state.searchTerm}" <br></br>username:{" "}
+                {this.state.username}
               </h1>
               <div>
                 <table className="table table-striped">
                   <thead>
                     <tr>
                       <td> Book Name</td>
-                      <td> Book Author</td>
+                      <td> Book Seller</td>
                       <td> Book ISBN</td>
                       <td> Book Category</td>
+                      <td> New Book</td>
+                      {/* <td> Loaned Book</td> */}
                     </tr>
                   </thead>
                   <tbody>
                     {this.state.books.map((book) => (
                       <tr key={book.name}>
+                        {console.log(book.newbook)}
                         <td>
                           <Link
                             to={{
                               pathname: "/book-details",
                               state: {
                                 username: this.state.username,
-                                bookName: book.name,
                                 bookIsbn: book.isbn,
-                                bookAuthor: book.author,
-                                bookCategory: book.category,
-                                bookPrice: book.price,
-                                bookSeller: book.seller,
                               },
                             }}
                           >
                             {book.name}
                           </Link>
                         </td>
-
-                        <td> {book.author}</td>
+                        <td> {book.seller}</td>
                         <td> {book.isbn}</td>
                         <td> {book.category}</td>
+                        <td> {String(book.newbook)}</td>
+                        {/* <td> {String(book.loanedbook)}</td> */}
                       </tr>
                     ))}
                   </tbody>

@@ -21,6 +21,10 @@ class SearchResultsService {
         return axios.patch(BOOK_REST_API_URL + backendLocationUrl, backendDataBody);
     }
 
+    get(backendLocationUrl, backendDataBody){
+        return axios.get(BOOK_REST_API_URL + backendLocationUrl, backendDataBody);
+    }
+
     
 }
 

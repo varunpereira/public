@@ -31,17 +31,31 @@ class Register extends Component {
 
   async createUser(event) {
     event.preventDefault();
-    let registeredUser = {
-      username: this.state.username,
-      fullname: this.state.fullname,
-      password: this.state.password,
-      confirmpassword: this.state.confirmpassword,
-      accounttype: this.state.accounttype,
-      address: this.state.address,
-      phonenumber: this.state.phonenumber,
-      abn: this.state.abn,
-      registerstatus: "done",
-    };
+    let registeredUser;
+    if (this.state.accounttype == "Customer") {
+      registeredUser = {
+        username: this.state.username,
+        fullname: this.state.fullname,
+        password: this.state.password,
+        confirmpassword: this.state.confirmpassword,
+        accounttype: this.state.accounttype,
+        address: this.state.address,
+        phonenumber: this.state.phonenumber,
+        registerstatus: "registered",
+      };
+    } else {
+      registeredUser = {
+        username: this.state.username,
+        fullname: this.state.fullname,
+        password: this.state.password,
+        confirmpassword: this.state.confirmpassword,
+        accounttype: this.state.accounttype,
+        address: this.state.address,
+        phonenumber: this.state.phonenumber,
+        registerstatus: "registered",
+        abn: this.state.abn,
+      };
+    }
 
     try {
       let urlChange = "/register";
@@ -71,7 +85,7 @@ class Register extends Component {
       let resp = await UserService.postUser(user, urlChange);
       if (resp.data.success === true) {
         let userReceived = await UserService.patchUser(
-          "/updateToken/" + resp.data.token + "/"+ this.state.username
+          "/updateToken/" + resp.data.token + "/" + this.state.username
         );
         let pageChange = "/dashboard";
         if (userReceived.data.accounttype === "Admin") {

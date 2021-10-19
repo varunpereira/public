@@ -4,6 +4,24 @@ const USERS_REST_API_URL = "http://localhost:1001/api/users";
 
 class UserService {
   //sends data from current page to java class to h2 db and receives data
+  post(backendLocationUrl, backendDataBody) {
+    return axios.post(USERS_REST_API_URL + backendLocationUrl, backendDataBody);
+  }
+
+  delete(backendLocationUrl, backendDataBody) {
+    return axios.delete(
+      USERS_REST_API_URL + backendLocationUrl,
+      backendDataBody
+    );
+  }
+
+  patch(backendLocationUrl, backendDataBody) {
+    return axios.patch(
+      USERS_REST_API_URL + backendLocationUrl,
+      backendDataBody
+    );
+  }
+
   postUser(user, page) {
     return axios.post(USERS_REST_API_URL + page, user);
   }

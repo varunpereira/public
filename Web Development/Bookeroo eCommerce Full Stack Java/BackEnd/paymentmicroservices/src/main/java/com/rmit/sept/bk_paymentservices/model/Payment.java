@@ -6,9 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -39,6 +36,8 @@ public class Payment {
 	private String method = "paypal";
 	private String intent = "sale";
 	private String description = "paypal payment";
+	
+	private String saleid;
 	
     // Getters and setters
 	
@@ -88,6 +87,14 @@ public class Payment {
 
 	public void setShippingaddress(String shippingaddress) {
 		this.shippingaddress = shippingaddress;
+	}
+	
+	public String getSaleid() {
+		return saleid;
+	}
+
+	public void setSaleid(String saleid) {
+		this.saleid = saleid;
 	}
 	
 	// Paypal Getters and setters

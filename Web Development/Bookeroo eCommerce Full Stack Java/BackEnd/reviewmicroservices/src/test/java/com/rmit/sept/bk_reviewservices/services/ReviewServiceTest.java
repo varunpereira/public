@@ -6,12 +6,14 @@ import static org.junit.Assert.*;
 import java.util.List;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.MethodOrderer.Alphanumeric;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@TestMethodOrder(Alphanumeric.class)
 class ReviewServiceTest {
 
 	Review review;
@@ -32,7 +34,7 @@ class ReviewServiceTest {
     }
 
     @Test
-    void updateReview() {
+    void AupdateReview() {
         // Update review
         review.setUser("Bob");
         review.setDescription("Not a great book");
@@ -44,7 +46,7 @@ class ReviewServiceTest {
     }
 
     @Test
-    void findBookReviews() {
+    void BfindBookReviews() {
     	 // Finds review by book name 
         String bookName = "Harry Potter and the Deathly Hallows";
         List<Review> review = reviewService.findBookReviews(bookName);
@@ -55,7 +57,7 @@ class ReviewServiceTest {
     
     @AfterAll
     void deleteReview() {
-        // Deletes Order
+        // Deletes Review
 		reviewService.deleteReview(1L);
 		assertEquals(false, reviewService.reviewExists(1L));
         System.out.println("Review deleted");
