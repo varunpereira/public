@@ -1,0 +1,18 @@
+docker build -t backend/login .
+docker run -p 1001:1001 backend/login
+
+docker build -t backend/order .
+docker run -p 1004:1004 backend/order
+
+docker build -t backend/payment .
+docker run -p 1008:1008 backend/payment
+
+docker build -t backend/review .
+docker run -p 1003:1003 backend/review
+
+docker build -t backend/search .
+docker run -p 1002:1002 backend/search
+
+docker build -t frontend/myfirstapp .
+docker run -it -p 3000:3000 frontend/myfirstapp
+

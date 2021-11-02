@@ -13,11 +13,11 @@
 * Microsoft Teams : https://teams.microsoft.com/l/channel/19%3aZ-GXCFkZI3Z4wH62EYm9VQhMfmEPB9JAo7i-rNBMwO01%40thread.tacv2/General?groupId=0af78323-1b67-4204-9f63-c2f3b4c4122a&tenantId=d1323671-cdbe-4417-b4d4-bdb24b51316b  
 
 ## Technologies
-* Runs Locally with H2 Database (but can use AWS RDS)
+* Runs Locally (ports 3000,1001,1002,1003,1004,1008)
 * HTML, CSS, JS, React, Bootstrap
-* HTTP, REST API, Paypal Sandbox API
+* embedded Tomcat server, HTTP, REST API, Paypal Sandbox API
 * Java, Spring Boot, Maven, MVC
-* Docker, Cicleci, AWS (S3, RDS), H2
+* Docker, Cicleci, AWS (S3, RDS), H2 (can use MySQl, RDS)
 * Agile, Scrum Methodologies
 * Git, GitHub
 * VS Code, Intellij (JDK 8)
