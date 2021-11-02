@@ -25,6 +25,10 @@ class SearchResultsService {
         return axios.get(BOOK_REST_API_URL + backendLocationUrl, backendDataBody);
     }
 
+    delete(backendLocationUrl, backendDataBody){
+        return axios.delete(BOOK_REST_API_URL + backendLocationUrl, backendDataBody);
+    }
+
     
 }
 

@@ -20,6 +20,7 @@
 * Docker, Cicleci, AWS (S3, RDS), H2
 * Agile, Scrum Methodologies
 * Git, GitHub
+* VS Code, Intellij (JDK 8)
 
 
 
